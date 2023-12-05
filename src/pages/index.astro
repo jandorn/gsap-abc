@@ -1,5 +1,6 @@
 ---
-
+import { Image } from "astro:assets";
+import giraffe from "../assets/logo.svg";
 ---
 
 <html lang="en">
@@ -8,9 +9,27 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>GSAP abc</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div class="mx-auto max-w-4xl">
+			<header class="flex justify-center my-8">
+				<Image
+					class="w-28"
+					src={giraffe}
+					alt="GSAP abc logo. its a giraffe head"
+				/>
+			</header>
+			<main
+				class="flex flex-col items-center justify-center text-center space-y-4"
+			>
+				<h1 class="text-3xl font-semibold">GSAP abc</h1>
+				<p class="text-lg font-light text-gray-500">
+					A collection of every free and paid GSAP functionality available
+				</p>
+
+				<div class="border border-black w-full rounded-lg min-h-[4rem]"></div>
+			</main>
+		</div>
 	</body>
 </html>
