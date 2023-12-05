@@ -1,6 +1,6 @@
 # GSAP abc
 
-This project is a simple showcase of every free and paid GSAP functionality.
+This project is a simple showcase of every free and paid GSAP feature.
 
 Its primary function is to allow me to learn the animation library fast and efficiently while also documenting my journey.
 
