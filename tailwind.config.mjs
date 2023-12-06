@@ -1,5 +1,7 @@
 import animate from "tailwindcss-animate"
 
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -81,7 +83,13 @@ export default {
         "collapsible-down": "collapsible-down 0.2s ease-in-out",
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
       },
+      fontFamily: {
+        sans: ['Inter Variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
+      }
     },
   },
-  plugins: [animate],
+  plugins: [
+    animate,
+    require('@tailwindcss/typography'),
+  ],
 }
