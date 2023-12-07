@@ -98,11 +98,11 @@ import AnimationCard from '@/components/AnimationCard.vue';
 	gsap.registerPlugin(GSDevTools);
 	gsap.registerPlugin(DrawSVGPlugin) 
 
-	// GSAP DEV TOOLS FOR DEBUGGING
-	// GSDevTools.create();
+	let earsTimeline;
+	let arrowTimeline;
 
 	function animateEars() {
-		const tl = gsap.timeline({ repeatDelay: 6, repeat: -1 });
+		const tl = gsap.timeline({ id: "ears", repeatDelay: 6, repeat: -1 });
 
 		tl.to(".ear-l", {
 			rotate: 10,
@@ -125,7 +125,7 @@ import AnimationCard from '@/components/AnimationCard.vue';
 	}
 
 	function animateArrow() {
-		const tl = gsap.timeline();
+		const tl = gsap.timeline({id: "arrow" });
 
 		tl.fromTo(".arrow", {
 			drawSVG: "0%",
@@ -150,9 +150,12 @@ import AnimationCard from '@/components/AnimationCard.vue';
 		return tl;
 	}
 
-	const earsTimeline = animateEars();
-	earsTimeline.play();
+	earsTimeline = animateEars();
+	arrowTimeline = animateArrow();
+	
+	// GSAP DEV TOOLS FOR DEBUGGING
+	// GSDevTools.create();
 
-	const arrowTimeline = animateArrow();
+	earsTimeline.play();
 	arrowTimeline.play();
 </script>
