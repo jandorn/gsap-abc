@@ -3,6 +3,9 @@ import '@/styles/globals.css'
 import '@fontsource-variable/inter';
 
 import AnimationCard from '@/components/AnimationCard.vue';
+
+import Pinning from '@/animations/scrollTrigger/pinning.astro';
+import Sliding from '@/animations/scrollTrigger/sliding.astro';
 ---
 
 <html lang="en">
@@ -79,10 +82,26 @@ import AnimationCard from '@/components/AnimationCard.vue';
 			</header>
 
 			<main class="flex flex-col items-center justify-center space-y-8">
-				<!-- <div class="bg-white border border-black w-full rounded-lg min-h-[4rem] drop-shadow-lg"></div> -->
 				
-				<AnimationCard client:load />
-				<AnimationCard client:load />
+				<AnimationCard
+					animationTitle='Pinning'
+					linkText='ScrollTrigger'
+					linkUrl='https://gsap.com/docs/v3/Plugins/ScrollTrigger/'
+					code="let number = 123;"
+					client:visible
+				>
+					<Pinning />
+				</AnimationCard>
+
+				<AnimationCard
+					animationTitle='Sliding'
+					linkText='ScrollTrigger'
+					linkUrl='https://gsap.com/docs/v3/Plugins/ScrollTrigger/'
+					code="let number = 45634;"
+					client:visible
+				>
+					<Sliding />
+				</AnimationCard>
 
 			</main>
 
