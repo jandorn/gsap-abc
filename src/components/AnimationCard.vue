@@ -58,7 +58,7 @@ watchEffect(() => {
             </a>
           </CardTitle>
         </CardHeader>
-        <CardContent class="space-y-2">
+        <CardContent class="flex justify-center space-y-2">
           <slot />
         </CardContent>
       </Card>
