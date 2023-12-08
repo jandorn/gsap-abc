@@ -3,9 +3,17 @@ import '@/styles/globals.css'
 import '@fontsource-variable/inter';
 
 import AnimationCard from '@/components/AnimationCard.vue';
+import { Code } from 'astro:components';
 
 import Pinning from '@/animations/scrollTrigger/pinning.astro';
 import Sliding from '@/animations/scrollTrigger/sliding.astro';
+
+import fs from 'fs';
+import path from 'path';
+
+const pinningCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations', 'scrollTrigger', 'pinning.astro'), 'utf8');
+const slidingCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations', 'scrollTrigger', 'sliding.astro'), 'utf8');
+
 ---
 
 <html lang="en">
@@ -87,20 +95,24 @@ import Sliding from '@/animations/scrollTrigger/sliding.astro';
 					animationTitle='Pinning'
 					linkText='ScrollTrigger'
 					linkUrl='https://gsap.com/docs/v3/Plugins/ScrollTrigger/'
-					code="let number = 123;"
 					client:visible
 				>
-					<Pinning />
+					<Pinning slot='animation' />
+					<span class="" slot="code">
+						<Code code={pinningCode} lang="js" wrap theme="nord" />
+					</span>
 				</AnimationCard>
 
 				<AnimationCard
 					animationTitle='Sliding'
 					linkText='ScrollTrigger'
 					linkUrl='https://gsap.com/docs/v3/Plugins/ScrollTrigger/'
-					code="let number = 45634;"
 					client:visible
 				>
-					<Sliding />
+					<Sliding slot='animation' />
+					<span class="" slot="code">
+						<Code code={slidingCode} lang="js" wrap theme="nord" />
+					</span>
 				</AnimationCard>
 
 				<div class="h-[50vh]">
