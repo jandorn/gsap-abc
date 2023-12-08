@@ -1,5 +1,31 @@
----
+<div class="w-full flex justify-center pointer-events-none">
+  <svg class="pinning" width="402" height="358" viewBox="0 0 402 358" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect class="center" x="94.8564" y="97.9719" width="183.987" height="183.987" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="right-small" x="297.178" y="119.387" width="41.5524" height="41.5524" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="right-large" x="297.178" y="178.038" width="103.921" height="103.921" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="right-medium" x="297.178" y="299.058" width="58.1936" height="58.1936" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="bottom" x="244.099" y="299.058" width="34.7449" height="34.7449" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="left-small" x="41.7773" y="247.214" width="34.7449" height="34.7449" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="left-large" x="0.963867" y="149.652" width="75.5582" height="75.5582" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="top-small" x="134.636" y="32.6364" width="47.3356" height="47.3356" rx="4.5" stroke="#A8A8A8"/>
+    <rect class="top-large" x="199.971" y="1.09937" width="78.8726" height="78.8726" rx="4.5" stroke="#A8A8A8"/>
+  </svg>  
+</div>
+  
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
----
+  gsap.registerPlugin(ScrollTrigger);
 
-<em>pinning animation</em>
+  gsap.from(".pinning", {
+    scale: 6,
+    transformOrigin: "45.5% 50%",
+    scrollTrigger: {
+      trigger: ".pinning",
+      start: "top -40%",
+      end: "+=400",
+      scrub: true
+    }
+  });
+</script>
