@@ -48,7 +48,7 @@ watchEffect(() => {
         Code
       </TabsTrigger>
     </TabsList>
-    <TabsContent value="animation">
+    <TabsContent class="overflow-hidden" value="animation">
       <Card>
         <CardHeader>
           <CardTitle>
