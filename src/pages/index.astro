@@ -5,15 +5,14 @@ import '@fontsource-variable/inter';
 import AnimationCard from '@/components/AnimationCard.vue';
 import { Code } from 'astro:components';
 
-import Pinning from '@/animations/scrollTrigger/pinning.astro';
-import Sliding from '@/animations/scrollTrigger/sliding.astro';
+import Pinning from '@/animations/scrollTrigger/pinning.vue';
+import Sliding from '@/animations/scrollTrigger/sliding.vue';
 
 import fs from 'fs';
 import path from 'path';
 
-const pinningCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations', 'scrollTrigger', 'pinning.astro'), 'utf8');
-const slidingCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations', 'scrollTrigger', 'sliding.astro'), 'utf8');
-
+const pinningCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations', 'scrollTrigger', 'pinning.vue'), 'utf8');
+const slidingCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations', 'scrollTrigger', 'sliding.vue'), 'utf8');
 ---
 
 <html lang="en">
@@ -97,8 +96,8 @@ const slidingCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations'
 					linkUrl='https://gsap.com/docs/v3/Plugins/ScrollTrigger/'
 					client:visible
 				>
-					<Pinning slot='animation' />
-					<span class="" slot="code">
+					<Pinning slot='animation' client:only />
+					<span slot='code'>
 						<Code code={pinningCode} lang="js" theme="nord" />
 					</span>
 				</AnimationCard>
@@ -109,8 +108,8 @@ const slidingCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations'
 					linkUrl='https://gsap.com/docs/v3/Plugins/ScrollTrigger/'
 					client:visible
 				>
-					<Sliding slot='animation' />
-					<span class="" slot="code">
+					<Sliding slot='animation' client:only />
+					<span slot='code'>
 						<Code code={slidingCode} lang="js" theme="nord" />
 					</span>
 				</AnimationCard>
@@ -186,7 +185,7 @@ const slidingCode = fs.readFileSync(path.join(process.cwd(), 'src', 'animations'
 	arrowTimeline = animateArrow();
 	
 	// GSAP DEV TOOLS FOR DEBUGGING
-	// GSDevTools.create();
+	GSDevTools.create();
 
 	earsTimeline.play();
 	arrowTimeline.play();
