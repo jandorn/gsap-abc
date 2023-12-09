@@ -1,0 +1,49 @@
+<script setup lang="ts">
+  import { onMounted, nextTick, watchEffect } from "vue";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const props = defineProps({
+    slotKey: Number
+  })
+
+  const animate = () => {
+    nextTick(() => {
+      gsap.from(".rect", {
+        clearProps: "all",
+        scale: 4,
+        opacity: 0,
+        transformOrigin: "center center",
+        scrollTrigger: {
+          trigger: ".container",
+          start: "top 45%",
+          end: "+=300",
+          scrub: true
+        },
+        stagger: 0.1
+      });
+    });
+  };
+
+  onMounted(animate);
+  // watchEffect(() => animate);
+  // watchEffect(() => console.log("slotKey updated"));
+</script>
+
+<template>
+  <div class="container w-full flex justify-center pointer-events-none">
+    <svg class="pinning overflow-visible" width="402" height="358" viewBox="0 0 402 358" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect class="rect center" x="94.8564" y="97.9719" width="183.987" height="183.987" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect right-small" x="297.178" y="119.387" width="41.5524" height="41.5524" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect right-large" x="297.178" y="178.038" width="103.921" height="103.921" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect right-medium" x="297.178" y="299.058" width="58.1936" height="58.1936" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect bottom" x="244.099" y="299.058" width="34.7449" height="34.7449" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect left-small" x="41.7773" y="247.214" width="34.7449" height="34.7449" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect left-large" x="0.963867" y="149.652" width="75.5582" height="75.5582" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect top-small" x="134.636" y="32.6364" width="47.3356" height="47.3356" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+      <rect class="rect top-large" x="199.971" y="1.09937" width="78.8726" height="78.8726" rx="4.5" stroke-width="3" stroke="#A8A8A8"/>
+    </svg>  
+  </div>
+</template>
